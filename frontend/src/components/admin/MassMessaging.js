@@ -23,10 +23,13 @@ const MassMessaging = () => {
 
   const fetchCustomerCount = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/customers/stats`);
-      setCustomerStats(response.data.stats);
+      const response = await axios.get('/messages/stats');
+      if (response.data.success) {
+        setCustomerStats(response.data.data);
+      }
     } catch (error) {
       console.error('Failed to fetch customer stats:', error);
+      toast.error('Failed to fetch customer statistics');
     }
   };
 
@@ -35,14 +38,13 @@ const MassMessaging = () => {
     setSendResult(null);
     
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/messages/send`, {
+      const response = await axios.post('/messages/send', {
         message: data.message,
-        imageUrl: data.imageUrl || null,
         sendToVerifiedOnly: sendToVerifiedOnly
       });
 
       setSendResult(response.data.data);
-      toast.success(`Message sent successfully! ${response.data.data.successful} recipients reached.`);
+      toast.success(`Message sent successfully to ${response.data.data.totalRecipients} recipients!`);
       reset();
     } catch (error) {
       const message = error.response?.data?.message || 'Failed to send messages';
@@ -131,7 +133,7 @@ const MassMessaging = () => {
                 type="url"
                 {...register('imageUrl', {
                   pattern: {
-                    value: /^https?:\/\/.+/,
+                    value: /^https?:\/\/.+/, 
                     message: 'Please enter a valid URL starting with http:// or https://'
                   }
                 })}
@@ -205,14 +207,14 @@ const MassMessaging = () => {
                 <CheckCircle className="h-5 w-5 text-green-500" />
                 <span className="text-sm text-gray-600">Successful</span>
               </div>
-              <p className="text-2xl font-bold text-green-600">{sendResult.successful}</p>
+              <p className="text-2xl font-bold text-green-600">{sendResult.successful || sendResult.totalRecipients}</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <XCircle className="h-5 w-5 text-red-500" />
                 <span className="text-sm text-gray-600">Failed</span>
               </div>
-              <p className="text-2xl font-bold text-red-600">{sendResult.failed}</p>
+              <p className="text-2xl font-bold text-red-600">{sendResult.failed || 0}</p>
             </div>
           </div>
 
