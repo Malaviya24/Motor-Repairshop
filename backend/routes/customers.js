@@ -62,6 +62,8 @@ router.get('/stats', auth, async (req, res) => {
     const totalCustomers = await Customer.countDocuments();
     const unreadMessages = await Customer.countDocuments({ status: 'unread' });
     const repliedMessages = await Customer.countDocuments({ status: 'replied' });
+    const verifiedCustomers = await Customer.countDocuments({ isVerified: true });
+    const unverifiedCustomers = await Customer.countDocuments({ isVerified: false });
     
     // Get customers from last 30 days
     const thirtyDaysAgo = new Date();
@@ -76,6 +78,8 @@ router.get('/stats', auth, async (req, res) => {
         totalCustomers,
         unreadMessages,
         repliedMessages,
+        verifiedCustomers,
+        unverifiedCustomers,
         recentCustomers
       }
     });
@@ -84,6 +88,155 @@ router.get('/stats', auth, async (req, res) => {
     console.error('Get customer stats error:', error);
     res.status(500).json({
       error: 'Failed to fetch customer statistics',
+      message: 'Please try again later'
+    });
+  }
+});
+
+// POST /api/customers - Add new customer (admin only)
+router.post('/', auth, async (req, res) => {
+  try {
+    const { name, phoneNumber, isVerified, notes } = req.body;
+
+    // Validate phone number
+    if (!phoneNumber || !phoneNumber.trim()) {
+      return res.status(400).json({
+        error: 'Phone number is required'
+      });
+    }
+
+    // Check if phone number already exists
+    const existingCustomer = await Customer.findOne({ phoneNumber: phoneNumber.trim() });
+    if (existingCustomer) {
+      return res.status(400).json({
+        error: 'Customer with this phone number already exists'
+      });
+    }
+
+    const customer = new Customer({
+      name: name?.trim() || '',
+      phoneNumber: phoneNumber.trim(),
+      isVerified: isVerified || false,
+      notes: notes?.trim() || ''
+    });
+
+    await customer.save();
+
+    res.status(201).json({
+      success: true,
+      message: 'Customer added successfully',
+      data: customer
+    });
+
+  } catch (error) {
+    console.error('Add customer error:', error);
+    res.status(500).json({
+      error: 'Failed to add customer',
+      message: 'Please try again later'
+    });
+  }
+});
+
+// PUT /api/customers/:id - Update customer (admin only)
+router.put('/:id', auth, async (req, res) => {
+  try {
+    const { name, phoneNumber, isVerified, notes } = req.body;
+    const customerId = req.params.id;
+
+    const customer = await Customer.findById(customerId);
+    if (!customer) {
+      return res.status(404).json({
+        error: 'Customer not found'
+      });
+    }
+
+    // Check if phone number is being changed and if it already exists
+    if (phoneNumber && phoneNumber.trim() !== customer.phoneNumber) {
+      const existingCustomer = await Customer.findOne({ 
+        phoneNumber: phoneNumber.trim(),
+        _id: { $ne: customerId }
+      });
+      if (existingCustomer) {
+        return res.status(400).json({
+          error: 'Customer with this phone number already exists'
+        });
+      }
+    }
+
+    customer.name = name?.trim() || '';
+    customer.phoneNumber = phoneNumber?.trim() || customer.phoneNumber;
+    customer.isVerified = isVerified !== undefined ? isVerified : customer.isVerified;
+    customer.notes = notes?.trim() || '';
+
+    await customer.save();
+
+    res.json({
+      success: true,
+      message: 'Customer updated successfully',
+      data: customer
+    });
+
+  } catch (error) {
+    console.error('Update customer error:', error);
+    res.status(500).json({
+      error: 'Failed to update customer',
+      message: 'Please try again later'
+    });
+  }
+});
+
+// DELETE /api/customers/:id - Delete customer (admin only)
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const customerId = req.params.id;
+
+    const customer = await Customer.findByIdAndDelete(customerId);
+    if (!customer) {
+      return res.status(404).json({
+        error: 'Customer not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'Customer deleted successfully'
+    });
+
+  } catch (error) {
+    console.error('Delete customer error:', error);
+    res.status(500).json({
+      error: 'Failed to delete customer',
+      message: 'Please try again later'
+    });
+  }
+});
+
+// PATCH /api/customers/:id/verify - Toggle verification status (admin only)
+router.patch('/:id/verify', auth, async (req, res) => {
+  try {
+    const customerId = req.params.id;
+    const { isVerified } = req.body;
+
+    const customer = await Customer.findById(customerId);
+    if (!customer) {
+      return res.status(404).json({
+        error: 'Customer not found'
+      });
+    }
+
+    customer.isVerified = isVerified;
+    await customer.save();
+
+    res.json({
+      success: true,
+      message: 'Verification status updated',
+      data: customer
+    });
+
+  } catch (error) {
+    console.error('Update verification error:', error);
+    res.status(500).json({
+      error: 'Failed to update verification status',
       message: 'Please try again later'
     });
   }

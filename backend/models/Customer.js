@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const customerSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Name is required'],
+    required: false, // Made optional
     trim: true,
     maxlength: [100, 'Name cannot exceed 100 characters']
   },
@@ -15,7 +15,7 @@ const customerSchema = new mongoose.Schema({
   },
   message: {
     type: String,
-    required: [true, 'Message is required'],
+    required: false, // Made optional for manually added customers
     trim: true,
     maxlength: [1000, 'Message cannot exceed 1000 characters']
   },
@@ -23,6 +23,15 @@ const customerSchema = new mongoose.Schema({
     type: String,
     enum: ['unread', 'replied'],
     default: 'unread'
+  },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  notes: {
+    type: String,
+    trim: true,
+    maxlength: [500, 'Notes cannot exceed 500 characters']
   },
   createdAt: {
     type: Date,

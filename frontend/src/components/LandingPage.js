@@ -6,7 +6,6 @@ import {
   Mail, 
   MapPin, 
   Wrench, 
-  Car, 
   Download,
   MessageCircle,
   Send,

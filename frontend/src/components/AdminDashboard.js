@@ -8,11 +8,13 @@ import {
   Send, 
   Settings,
   Menu,
-  X
+  X,
+  Users
 } from 'lucide-react';
 import MassMessaging from './admin/MassMessaging';
 import CustomerMessages from './admin/CustomerMessages';
 import SettingsPage from './admin/SettingsPage';
+import CustomerManagement from './admin/CustomerManagement';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -26,6 +28,7 @@ const AdminDashboard = () => {
 
   const menuItems = [
     { name: 'Mass Messaging', path: '/admin', icon: Send },
+    { name: 'Customer Management', path: '/admin/customers', icon: Users },
     { name: 'Customer Messages', path: '/admin/messages', icon: MessageSquare },
     { name: 'Settings', path: '/admin/settings', icon: Settings },
   ];
@@ -122,6 +125,7 @@ const AdminDashboard = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Routes>
               <Route path="/" element={<MassMessaging />} />
+              <Route path="/customers" element={<CustomerManagement />} />
               <Route path="/messages" element={<CustomerMessages />} />
               <Route path="/settings" element={<SettingsPage />} />
             </Routes>

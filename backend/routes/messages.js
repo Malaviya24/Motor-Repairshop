@@ -65,10 +65,16 @@ router.post('/send', auth, [
       });
     }
 
-    const { message, imageUrl } = req.body;
+    const { message, imageUrl, sendToVerifiedOnly = true } = req.body;
 
-    // Get all customer phone numbers
-    const customers = await Customer.find({}).select('phoneNumber');
+    // Build query based on verification preference
+    let query = {};
+    if (sendToVerifiedOnly) {
+      query.isVerified = true;
+    }
+
+    // Get customer phone numbers
+    const customers = await Customer.find(query).select('phoneNumber isVerified');
     const phoneNumbers = customers.map(customer => 
       whatsappAPI.formatPhoneNumber(customer.phoneNumber)
     );

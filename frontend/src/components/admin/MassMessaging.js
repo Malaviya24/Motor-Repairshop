@@ -6,8 +6,13 @@ import toast from 'react-hot-toast';
 
 const MassMessaging = () => {
   const [isSending, setIsSending] = useState(false);
-  const [customerCount, setCustomerCount] = useState(0);
+  const [customerStats, setCustomerStats] = useState({
+    totalCustomers: 0,
+    verifiedCustomers: 0,
+    unverifiedCustomers: 0
+  });
   const [sendResult, setSendResult] = useState(null);
+  const [sendToVerifiedOnly, setSendToVerifiedOnly] = useState(true);
   
   const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
   const message = watch('message', '');
@@ -19,9 +24,9 @@ const MassMessaging = () => {
   const fetchCustomerCount = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/customers/stats`);
-      setCustomerCount(response.data.stats.totalCustomers);
+      setCustomerStats(response.data.stats);
     } catch (error) {
-      console.error('Failed to fetch customer count:', error);
+      console.error('Failed to fetch customer stats:', error);
     }
   };
 
@@ -32,7 +37,8 @@ const MassMessaging = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/messages/send`, {
         message: data.message,
-        imageUrl: data.imageUrl || null
+        imageUrl: data.imageUrl || null,
+        sendToVerifiedOnly: sendToVerifiedOnly
       });
 
       setSendResult(response.data.data);
@@ -42,9 +48,9 @@ const MassMessaging = () => {
       const message = error.response?.data?.message || 'Failed to send messages';
       toast.error(message);
       setSendResult({ 
-        totalRecipients: customerCount,
+        totalRecipients: sendToVerifiedOnly ? customerStats.verifiedCustomers : customerStats.totalCustomers,
         successful: 0,
-        failed: customerCount,
+        failed: sendToVerifiedOnly ? customerStats.verifiedCustomers : customerStats.totalCustomers,
         errors: [{ error: message }]
       });
     } finally {
@@ -60,12 +66,32 @@ const MassMessaging = () => {
       </div>
 
       {/* Customer Stats */}
-      <div className="card">
-        <div className="flex items-center gap-4">
-          <Users className="h-8 w-8 text-primary-600" />
-          <div>
-            <p className="text-sm text-gray-600">Total Customers</p>
-            <p className="text-2xl font-bold text-gray-900">{customerCount}</p>
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="card">
+          <div className="flex items-center gap-4">
+            <Users className="h-8 w-8 text-primary-600" />
+            <div>
+              <p className="text-sm text-gray-600">Total Customers</p>
+              <p className="text-2xl font-bold text-gray-900">{customerStats.totalCustomers}</p>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <div className="flex items-center gap-4">
+            <CheckCircle className="h-8 w-8 text-green-600" />
+            <div>
+              <p className="text-sm text-gray-600">Verified Customers</p>
+              <p className="text-2xl font-bold text-gray-900">{customerStats.verifiedCustomers}</p>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <div className="flex items-center gap-4">
+            <XCircle className="h-8 w-8 text-orange-600" />
+            <div>
+              <p className="text-sm text-gray-600">Unverified Customers</p>
+              <p className="text-2xl font-bold text-gray-900">{customerStats.unverifiedCustomers}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -121,10 +147,23 @@ const MassMessaging = () => {
             </p>
           </div>
 
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="sendToVerifiedOnly"
+              checked={sendToVerifiedOnly}
+              onChange={(e) => setSendToVerifiedOnly(e.target.checked)}
+              className="rounded border-gray-300"
+            />
+            <label htmlFor="sendToVerifiedOnly" className="text-sm text-gray-700">
+              Send only to verified customers
+            </label>
+          </div>
+
           <div className="flex items-center gap-4">
             <button
               type="submit"
-              disabled={isSending || customerCount === 0}
+              disabled={isSending || (sendToVerifiedOnly ? customerStats.verifiedCustomers === 0 : customerStats.totalCustomers === 0)}
               className="btn-primary flex items-center gap-2"
             >
               {isSending ? (
@@ -135,14 +174,14 @@ const MassMessaging = () => {
               ) : (
                 <>
                   <Send className="h-5 w-5" />
-                  Send to All Customers
+                  Send to {sendToVerifiedOnly ? 'Verified' : 'All'} Customers ({sendToVerifiedOnly ? customerStats.verifiedCustomers : customerStats.totalCustomers})
                 </>
               )}
             </button>
-            {customerCount === 0 && (
+            {(sendToVerifiedOnly ? customerStats.verifiedCustomers === 0 : customerStats.totalCustomers === 0) && (
               <div className="flex items-center gap-2 text-amber-600">
                 <AlertCircle className="h-5 w-5" />
-                <span className="text-sm">No customers found</span>
+                <span className="text-sm">No {sendToVerifiedOnly ? 'verified ' : ''}customers found</span>
               </div>
             )}
           </div>
