@@ -49,8 +49,8 @@ A comprehensive web application for motor repair shops built with the MERN stack
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/motor-repair-shop.git
-   cd motor-repair-shop
+   git clone https://github.com/Malaviya24/Motor-Repairshop.git
+   cd Motor-Repairshop
    ```
 
 2. **Install dependencies**
@@ -124,7 +124,7 @@ REACT_APP_SHOP_ADDRESS=123 Main Street, City, State 12345
 ## 🗂 Project Structure
 
 ```
-motor-repair-shop/
+Motor-Repairshop/
 ├── backend/                 # Node.js + Express server
 │   ├── models/             # MongoDB schemas
 │   ├── routes/             # API endpoints
