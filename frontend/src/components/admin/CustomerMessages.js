@@ -99,8 +99,8 @@ const CustomerMessages = () => {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Customer Messages</h1>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage and respond to customer inquiries</p>
+                 <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Customer Messages</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Manage and respond to customer inquiries</p>
       </div>
 
       {/* Stats */}
@@ -109,7 +109,7 @@ const CustomerMessages = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-amber-500" />
             <div>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Unread Messages</p>
+                              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Unread Messages</p>
               <p className="text-xl sm:text-2xl font-bold text-amber-600">{stats.unreadCount}</p>
             </div>
           </div>
@@ -118,8 +118,8 @@ const CustomerMessages = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />
             <div>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Total Messages</p>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{messages.length}</p>
+                              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Total Messages</p>
+                             <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{messages.length}</p>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@ const CustomerMessages = () => {
       <div className="card p-4 sm:p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Search
             </label>
             <div className="relative">
@@ -144,7 +144,7 @@ const CustomerMessages = () => {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Status
             </label>
             <select
@@ -165,8 +165,8 @@ const CustomerMessages = () => {
         {messages.length === 0 ? (
           <div className="card p-4 sm:p-6 text-center py-8 sm:py-12">
             <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No messages found</h3>
-            <p className="text-gray-600 dark:text-gray-300">No customer messages match your current filters.</p>
+                         <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No messages found</h3>
+            <p className="text-gray-600 dark:text-gray-400">No customer messages match your current filters.</p>
           </div>
         ) : (
           messages.map((message) => (
@@ -176,15 +176,15 @@ const CustomerMessages = () => {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-3">
                     <div className="flex items-center gap-2">
                       <User className="h-5 w-5 text-gray-400" />
-                      <span className="font-medium text-gray-900 dark:text-white">{message.name}</span>
+                                             <span className="font-medium text-gray-900 dark:text-white">{message.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm text-gray-600 dark:text-gray-300">{message.phoneNumber}</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">{message.phoneNumber}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm text-gray-600 dark:text-gray-300">{formatDate(message.createdAt)}</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">{formatDate(message.createdAt)}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {message.status === 'unread' ? (
@@ -197,7 +197,7 @@ const CustomerMessages = () => {
                       </span>
                     </div>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{message.message}</p>
+                  <p className="text-gray-700 dark:text-gray-400 whitespace-pre-wrap">{message.message}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
                   <button

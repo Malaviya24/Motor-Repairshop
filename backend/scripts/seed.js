@@ -20,20 +20,22 @@ const seedDatabase = async () => {
     await Customer.deleteMany({});
     console.log('🧹 Cleared existing data');
 
-    // Create admin user
+    // Create admin user - manually hash password to avoid double-hashing
     const adminPassword = 'admin123'; // Change this in production!
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(adminPassword, salt);
 
-    const admin = new Admin({
+    // Create admin directly in database to avoid pre-save hook
+    await mongoose.connection.collection('admins').insertOne({
       username: 'admin',
       password: hashedPassword,
       email: 'admin@universalmotorrewinding.com',
       role: 'admin',
-      isActive: true
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
 
-    await admin.save();
     console.log('👨‍💼 Admin user created:');
     console.log('   Username: admin');
     console.log('   Password: admin123');

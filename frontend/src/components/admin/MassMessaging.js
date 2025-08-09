@@ -63,8 +63,8 @@ const MassMessaging = () => {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Mass Messaging</h1>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Send WhatsApp messages to all your customers</p>
+                 <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Mass Messaging</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Send WhatsApp messages to all your customers</p>
       </div>
 
       {/* Customer Stats */}
@@ -73,8 +73,8 @@ const MassMessaging = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <Users className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />
             <div>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Total Customers</p>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.totalCustomers}</p>
+                             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Total Customers</p>
+                               <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.totalCustomers}</p>
             </div>
           </div>
         </div>
@@ -82,8 +82,8 @@ const MassMessaging = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
             <div>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Verified Customers</p>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.verifiedCustomers}</p>
+                             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Verified Customers</p>
+                               <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.verifiedCustomers}</p>
             </div>
           </div>
         </div>
@@ -91,8 +91,8 @@ const MassMessaging = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <XCircle className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
             <div>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Unverified Customers</p>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.unverifiedCustomers}</p>
+                             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Unverified Customers</p>
+                               <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.unverifiedCustomers}</p>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ const MassMessaging = () => {
       <div className="card p-4 sm:p-6">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Message *
             </label>
             <textarea
@@ -124,7 +124,7 @@ const MassMessaging = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Image URL (Optional)
             </label>
             <div className="flex items-center gap-2">
@@ -157,7 +157,7 @@ const MassMessaging = () => {
               onChange={(e) => setSendToVerifiedOnly(e.target.checked)}
               className="rounded border-gray-300"
             />
-            <label htmlFor="sendToVerifiedOnly" className="text-sm text-gray-700 dark:text-gray-300">
+            <label htmlFor="sendToVerifiedOnly" className="text-sm text-gray-700 dark:text-gray-400">
               Send only to verified customers
             </label>
           </div>
@@ -199,26 +199,26 @@ const MassMessaging = () => {
       {/* Send Results */}
       {sendResult && (
         <div className="card p-4 sm:p-6">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Send Results</h3>
+                     <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Send Results</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Users className="h-5 w-5 text-gray-500" />
-                <span className="text-sm text-gray-600 dark:text-gray-300">Total Recipients</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Total Recipients</span>
               </div>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{sendResult.totalRecipients}</p>
+                                                           <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{sendResult.totalRecipients}</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm text-gray-600 dark:text-gray-300">Successful</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Successful</span>
               </div>
               <p className="text-xl sm:text-2xl font-bold text-green-600">{sendResult.successful || sendResult.totalRecipients}</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <XCircle className="h-5 w-5 text-red-500" />
-                <span className="text-sm text-gray-600 dark:text-gray-300">Failed</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Failed</span>
               </div>
               <p className="text-xl sm:text-2xl font-bold text-red-600">{sendResult.failed || 0}</p>
             </div>
@@ -226,7 +226,7 @@ const MassMessaging = () => {
 
           {sendResult.errors && sendResult.errors.length > 0 && (
             <div>
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Errors:</h4>
+                             <h4 className="font-medium text-gray-900 dark:text-white mb-2">Errors:</h4>
               <div className="space-y-2">
                 {sendResult.errors.map((error, index) => (
                   <div key={index} className="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 p-2 rounded">

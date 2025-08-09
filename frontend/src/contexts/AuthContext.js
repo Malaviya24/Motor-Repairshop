@@ -51,7 +51,14 @@ export const AuthProvider = ({ children }) => {
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
-      setUser(user);
+      // Store complete user data including role, email, etc.
+      setUser({
+        id: user.id,
+        username: user.username,
+        email: user.email || 'admin@universalmotorrewinding.com',
+        role: user.role || 'admin',
+        lastLogin: user.lastLogin || new Date().toISOString()
+      });
       
       toast.success('Login successful!');
       return { success: true };
@@ -81,7 +88,10 @@ export const AuthProvider = ({ children }) => {
       const tokenData = JSON.parse(atob(token.split('.')[1]));
       setUser({
         id: tokenData.userId,
-        username: tokenData.username
+        username: tokenData.username,
+        email: 'admin@universalmotorrewinding.com',
+        role: 'admin',
+        lastLogin: new Date().toISOString()
       });
     } catch (error) {
       console.error('Error fetching user profile:', error);

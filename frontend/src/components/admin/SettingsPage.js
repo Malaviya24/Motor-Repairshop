@@ -59,49 +59,49 @@ const SettingsPage = () => {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Settings</h1>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage your account settings and preferences</p>
+                 <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Settings</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Manage your account settings and preferences</p>
       </div>
 
       {/* Profile Information */}
       <div className="card p-4 sm:p-6">
-        <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profile Information</h2>
+                 <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profile Information</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Username
             </label>
             <div className="flex items-center gap-2">
               <User className="h-5 w-5 text-gray-400" />
-              <span className="text-gray-900 dark:text-white">{user?.username}</span>
+                             <span className="text-gray-900 dark:text-white">{user?.username || 'admin'}</span>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Email
             </label>
             <div className="flex items-center gap-2">
               <Mail className="h-5 w-5 text-gray-400" />
-              <span className="text-gray-900 dark:text-white">{user?.email}</span>
+                             <span className="text-gray-900 dark:text-white">{user?.email || 'admin@universalmotorrewinding.com'}</span>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Role
             </label>
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-gray-400" />
-              <span className="text-gray-900 dark:text-white capitalize">{user?.role}</span>
+                             <span className="text-gray-900 dark:text-white capitalize">{user?.role || 'admin'}</span>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Last Login
             </label>
             <div className="flex items-center gap-2">
               <Calendar className="h-5 w-5 text-gray-400" />
-              <span className="text-gray-900">
-                {user?.lastLogin ? formatDate(user.lastLogin) : 'Never'}
+                                           <span className="text-gray-900 dark:text-white">
+                {user?.lastLogin ? formatDate(user.lastLogin) : 'Just now'}
               </span>
             </div>
           </div>
@@ -110,10 +110,10 @@ const SettingsPage = () => {
 
       {/* Change Password */}
       <div className="card p-4 sm:p-6">
-        <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Change Password</h2>
+                 <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Change Password</h2>
         <form onSubmit={handleSubmit(onSubmitPassword)} className="space-y-4 sm:space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Current Password *
             </label>
             <div className="relative">
@@ -147,7 +147,7 @@ const SettingsPage = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               New Password *
             </label>
             <div className="relative">
@@ -181,7 +181,7 @@ const SettingsPage = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
               Confirm New Password *
             </label>
             <div className="relative">
@@ -240,8 +240,8 @@ const SettingsPage = () => {
 
       {/* Security Tips */}
       <div className="card p-4 sm:p-6">
-        <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Security Tips</h2>
-        <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                 <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Security Tips</h2>
+        <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
           <div className="flex items-start gap-2">
             <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
             <p>Use a strong password with at least 8 characters including letters, numbers, and symbols</p>

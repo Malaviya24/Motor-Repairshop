@@ -28,14 +28,14 @@ const LoginPage = () => {
   };
 
   return (
-         <div className="min-h-screen bg-gray-50 dark:bg-slate-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8 transition-colors duration-200">
+         <div className="min-h-screen bg-gray-50 dark:bg-[#1E1E1E] flex flex-col justify-center py-12 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
                      <div className="text-4xl mb-6 opacity-80">👨‍💼</div>
-           <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Admin Login</h2>
+                          <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Admin Login</h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 transition-colors duration-200">
             Sign in to access the admin dashboard
           </p>
@@ -43,7 +43,7 @@ const LoginPage = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                 <div className="card bg-white dark:bg-slate-800 dark:border-slate-600 transition-colors duration-200">
+                 <div className="card bg-white dark:bg-[#1E1E1E] dark:border-slate-600 transition-colors duration-200">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200">
@@ -60,7 +60,7 @@ const LoginPage = () => {
                     required: 'Username is required',
                     minLength: { value: 3, message: 'Username must be at least 3 characters' }
                   })}
-                                     className="input-field pl-10 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                                     className="input-field pl-10 dark:bg-[#121212] dark:border-slate-600 dark:text-white dark:placeholder-[#888888] transition-colors duration-200"
                   placeholder="Enter your username"
                 />
               </div>
@@ -84,7 +84,7 @@ const LoginPage = () => {
                     required: 'Password is required',
                     minLength: { value: 6, message: 'Password must be at least 6 characters' }
                   })}
-                                     className="input-field pl-10 pr-10 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                                     className="input-field pl-10 pr-10 dark:bg-[#121212] dark:border-slate-600 dark:text-white dark:placeholder-[#888888] transition-colors duration-200"
                   placeholder="Enter your password"
                 />
                 <button

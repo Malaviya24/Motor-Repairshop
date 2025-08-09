@@ -172,8 +172,8 @@ const CustomerManagement = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Customer Management</h2>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage your customer database for WhatsApp messaging</p>
+                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Customer Management</h2>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Manage your customer database for WhatsApp messaging</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <button
@@ -227,13 +227,13 @@ const CustomerManagement = () => {
       {/* Add/Edit Form */}
       {showAddForm && (
         <div className="card p-4 sm:p-6">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
             {editingCustomer ? 'Edit Customer' : 'Add New Customer'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
                   Name (Optional)
                 </label>
                 <input
@@ -245,7 +245,7 @@ const CustomerManagement = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
                   Phone Number *
                 </label>
                 <input
@@ -259,7 +259,7 @@ const CustomerManagement = () => {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
                 Notes (Optional)
               </label>
               <textarea
@@ -278,7 +278,7 @@ const CustomerManagement = () => {
                 onChange={(e) => setFormData({...formData, isVerified: e.target.checked})}
                 className="rounded border-gray-300"
               />
-              <label htmlFor="isVerified" className="text-sm text-gray-700 dark:text-gray-300">
+              <label htmlFor="isVerified" className="text-sm text-gray-700 dark:text-gray-400">
                 Mark as verified customer
               </label>
             </div>
@@ -323,23 +323,23 @@ const CustomerManagement = () => {
           <div className="text-center py-8">
             <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No customers found</h3>
-            <p className="text-gray-600 dark:text-gray-300">Start by adding your first customer</p>
+            <p className="text-gray-600 dark:text-gray-400">Start by adding your first customer</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
-                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Customer
                   </th>
-                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Notes
                   </th>
-                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -358,7 +358,7 @@ const CustomerManagement = () => {
                           <div className="text-sm font-medium text-gray-900 dark:text-white">
                             {customer.name || 'No Name'}
                           </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
+                          <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                             <Phone className="h-3 w-3" />
                             {customer.phoneNumber}
                           </div>
@@ -426,7 +426,7 @@ const CustomerManagement = () => {
           >
             Previous
           </button>
-          <span className="text-sm text-gray-700 dark:text-gray-300">
+          <span className="text-sm text-gray-700 dark:text-gray-400">
             Page {currentPage} of {totalPages}
           </span>
           <button

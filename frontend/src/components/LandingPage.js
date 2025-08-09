@@ -70,7 +70,7 @@ END:VCARD`;
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
              {/* Header */}
-       <header className="bg-white dark:bg-slate-900 shadow-sm transition-colors duration-200">
+       <header className="bg-white dark:bg-[#1E1E1E] shadow-sm transition-colors duration-200">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="flex justify-between items-center py-6">
              <div className="flex items-center">
@@ -124,38 +124,38 @@ END:VCARD`;
       </section>
 
              {/* Services Section */}
-       <section className="py-16 bg-gray-50 dark:bg-slate-900">
+       <section className="py-16 bg-gray-50 dark:bg-[#1E1E1E]">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white transition-colors duration-200">
              Motor Repair Services We Offer
            </h2>
            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-3xl mb-6 opacity-80">💧</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Water Pump Motors</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Quick repairs and servicing to restore water flow and prevent downtime</p>
              </div>
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-3xl mb-6 opacity-80">❄️</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Air Conditioner Motors</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Fixing cooling fans and compressor motors for optimal performance</p>
              </div>
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-3xl mb-6 opacity-80">🏭</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Industrial Motors</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Maintenance and repair for heavy-duty machinery motors in factories and workshops</p>
              </div>
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-3xl mb-6 opacity-80">💨</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Fan & Blower Motors</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Balancing, rewinding, and restoring for quiet and efficient operation</p>
              </div>
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-3xl mb-6 opacity-80">🌊</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Submersible & Borewell Motors</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Expert service to handle water supply needs without interruptions</p>
              </div>
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-3xl mb-6 opacity-80">🔧</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Custom Motor Repairs</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Any type of single-phase or three-phase motor issues resolved with precision</p>
@@ -165,28 +165,28 @@ END:VCARD`;
       </section>
 
              {/* Why Choose Us Section */}
-       <section className="py-16 bg-white dark:bg-slate-800 transition-colors duration-200">
+       <section className="py-16 bg-white dark:bg-[#1E1E1E] transition-colors duration-200">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white transition-colors duration-200">
              Why Choose Us?
            </h2>
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">👨‍🔧</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Skilled Technicians</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Experienced professionals with years of motor repair expertise</p>
              </div>
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">⭐</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Quality Parts</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">We use only high-quality, genuine parts for all repairs</p>
              </div>
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">⚡</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Quick Turnaround</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Fast and efficient service to minimize your downtime</p>
              </div>
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">💰</div>
                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Affordable Pricing</h3>
                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Competitive rates without compromising on quality</p>
@@ -196,7 +196,7 @@ END:VCARD`;
       </section>
 
              {/* Contact Form Section */}
-       <section className="py-16 bg-gray-50 dark:bg-slate-900 transition-colors duration-200">
+       <section className="py-16 bg-gray-50 dark:bg-[#1E1E1E] transition-colors duration-200">
          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-12">
              <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white transition-colors duration-200">
@@ -208,7 +208,7 @@ END:VCARD`;
            </div>
 
            {isSubmitted ? (
-             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-600 text-center shadow-lg">
+             <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-8 border border-slate-200 dark:border-slate-600 text-center shadow-lg">
                <div className="text-5xl mb-6 opacity-80">✅</div>
                <h3 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">Message Sent!</h3>
                <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">Thank you for contacting us. We'll get back to you soon.</p>
@@ -220,7 +220,7 @@ END:VCARD`;
                </button>
              </div>
            ) : (
-                         <form onSubmit={handleSubmit(onSubmit)} className="card bg-white dark:bg-slate-800 dark:border-slate-600 transition-colors duration-200">
+                         <form onSubmit={handleSubmit(onSubmit)} className="card bg-white dark:bg-[#1E1E1E] dark:border-slate-600 transition-colors duration-200">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
@@ -232,7 +232,7 @@ END:VCARD`;
                        required: 'Name is required',
                        minLength: { value: 2, message: 'Name must be at least 2 characters' }
                      })}
-                     className="input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                     className="input-field dark:bg-[#121212] dark:border-slate-600 dark:text-white dark:placeholder-[#888888] transition-colors duration-200"
                      placeholder="Enter your full name"
                    />
                   {errors.name && (
@@ -271,7 +271,7 @@ END:VCARD`;
                          }
                        }
                      })}
-                     className="input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                     className="input-field dark:bg-[#121212] dark:border-slate-600 dark:text-white dark:placeholder-[#888888] transition-colors duration-200"
                      placeholder="+918866353250"
                    />
                   {errors.phoneNumber && (
@@ -289,7 +289,7 @@ END:VCARD`;
                      minLength: { value: 10, message: 'Message must be at least 10 characters' }
                    })}
                    rows="4"
-                   className="input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                   className="input-field dark:bg-[#121212] dark:border-slate-600 dark:text-white dark:placeholder-[#888888] transition-colors duration-200"
                    placeholder="Tell us about your motor issue and what service you need..."
                  />
                 {errors.message && (
@@ -319,20 +319,20 @@ END:VCARD`;
       </section>
 
              {/* Contact Info Section */}
-       <section className="py-16 bg-white dark:bg-slate-800 transition-colors duration-200">
+       <section className="py-16 bg-white dark:bg-[#1E1E1E] transition-colors duration-200">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid md:grid-cols-3 gap-8">
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">📞</div>
                <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Phone</h3>
                <p className="text-slate-600 dark:text-slate-300">+918866353250</p>
              </div>
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">📧</div>
                <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Email</h3>
                <p className="text-slate-600 dark:text-slate-300">info@universalmotorrewinding.com</p>
              </div>
-             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+             <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">📍</div>
                <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Address</h3>
                <p className="text-slate-600 dark:text-slate-300">123 Main Street, City, State 12345</p>
