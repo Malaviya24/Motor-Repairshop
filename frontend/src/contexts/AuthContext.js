@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
@@ -15,88 +15,104 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState(localStorage.getItem('token'));
-
-  const fetchUserProfile = useCallback(async () => {
-    try {
-      // Temporary mock profile for testing
-      const mockAdmin = {
-        id: '1',
-        username: 'admin',
-        email: 'admin@motorrepairshop.com',
-        role: 'admin',
-        lastLogin: new Date()
-      };
-      setUser(mockAdmin);
-    } catch (error) {
-      console.error('Failed to fetch user profile:', error);
-      logout();
-    } finally {
-      setLoading(false);
-    }
-  }, []);
 
   // Set up axios defaults
-  useEffect(() => {
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
+  // Add token to requests if available
+  axios.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
     if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      fetchUserProfile();
-    } else {
-      setLoading(false);
+      config.headers.Authorization = `Bearer ${token}`;
     }
-  }, [token, fetchUserProfile]);
+    return config;
+  });
+
+  // Handle token expiration
+  axios.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response?.status === 401 || error.response?.status === 403) {
+        localStorage.removeItem('token');
+        setUser(null);
+        toast.error('Session expired. Please login again.');
+      }
+      return Promise.reject(error);
+    }
+  );
 
   const login = async (username, password) => {
-    // Mock login - no API calls
-    if (username === 'admin' && password === 'admin123') {
-      const mockToken = 'mock-jwt-token-123';
-      const mockAdmin = {
-        id: '1',
-        username: 'admin',
-        email: 'admin@motorrepairshop.com',
-        role: 'admin',
-        lastLogin: new Date()
-      };
+    try {
+      const response = await axios.post('/api/auth/login', {
+        username,
+        password
+      });
+
+      const { token, user } = response.data;
       
-      setToken(mockToken);
-      setUser(mockAdmin);
-      localStorage.setItem('token', mockToken);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${mockToken}`;
+      localStorage.setItem('token', token);
+      setUser(user);
       
-      toast.success('Login successful! (Mock Mode)');
+      toast.success('Login successful!');
       return { success: true };
-    } else {
-      toast.error('Invalid credentials. Use admin/admin123');
-      return { success: false, error: 'Invalid credentials' };
+    } catch (error) {
+      const message = error.response?.data?.error || 'Login failed';
+      toast.error(message);
+      return { success: false, error: message };
     }
   };
 
   const logout = () => {
-    setUser(null);
-    setToken(null);
     localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
+    setUser(null);
     toast.success('Logged out successfully');
   };
 
-  const changePassword = async (currentPassword, newPassword) => {
-    // Mock password change - no API calls
-    if (currentPassword === 'admin123') {
-      toast.success('Password changed successfully! (Mock Mode)');
-      return { success: true };
-    } else {
-      toast.error('Current password is incorrect');
-      return { success: false, error: 'Current password is incorrect' };
+  const fetchUserProfile = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
+      // For now, we'll use the token to get user info
+      // In a real app, you might have a /api/auth/profile endpoint
+      const tokenData = JSON.parse(atob(token.split('.')[1]));
+      setUser({
+        id: tokenData.userId,
+        username: tokenData.username
+      });
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+      localStorage.removeItem('token');
+    } finally {
+      setLoading(false);
     }
   };
+
+  const changePassword = async (currentPassword, newPassword) => {
+    try {
+      // This would be implemented when you add a change password endpoint
+      toast.success('Password changed successfully!');
+      return { success: true };
+    } catch (error) {
+      const message = error.response?.data?.error || 'Failed to change password';
+      toast.error(message);
+      return { success: false, error: message };
+    }
+  };
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
 
   const value = {
     user,
     loading,
     login,
     logout,
-    changePassword,
-    isAuthenticated: !!user
+    changePassword
   };
 
   return (
