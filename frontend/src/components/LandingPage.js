@@ -94,7 +94,7 @@ END:VCARD`;
             Professional Motor Repair Services
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-primary-100">
-            Expert mechanics, quality parts, and reliable service for all your vehicle needs
+            We specialize in repairing and servicing a wide range of electric motors to keep your machines running smoothly
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
@@ -118,22 +118,66 @@ END:VCARD`;
       {/* Services Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Motor Repair Services We Offer</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card card-hover text-center">
               <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Engine Repair</h3>
-              <p className="text-gray-600">Complete engine diagnostics and repair services</p>
-            </div>
-            <div className="card card-hover text-center">
-              <Car className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Brake Service</h3>
-              <p className="text-gray-600">Brake inspection, repair, and replacement</p>
+              <h3 className="text-xl font-semibold mb-2">Water Pump Motors</h3>
+              <p className="text-gray-600">Quick repairs and servicing to restore water flow and prevent downtime</p>
             </div>
             <div className="card card-hover text-center">
               <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">General Maintenance</h3>
-              <p className="text-gray-600">Oil changes, tune-ups, and preventive maintenance</p>
+              <h3 className="text-xl font-semibold mb-2">Air Conditioner Motors</h3>
+              <p className="text-gray-600">Fixing cooling fans and compressor motors for optimal performance</p>
+            </div>
+            <div className="card card-hover text-center">
+              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Industrial Motors</h3>
+              <p className="text-gray-600">Maintenance and repair for heavy-duty machinery motors in factories and workshops</p>
+            </div>
+            <div className="card card-hover text-center">
+              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Fan & Blower Motors</h3>
+              <p className="text-gray-600">Balancing, rewinding, and restoring for quiet and efficient operation</p>
+            </div>
+            <div className="card card-hover text-center">
+              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Submersible & Borewell Motors</h3>
+              <p className="text-gray-600">Expert service to handle water supply needs without interruptions</p>
+            </div>
+            <div className="card card-hover text-center">
+              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Custom Motor Repairs</h3>
+              <p className="text-gray-600">Any type of single-phase or three-phase motor issues resolved with precision</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Skilled Technicians</h3>
+              <p className="text-gray-600">Experienced professionals with years of motor repair expertise</p>
+            </div>
+            <div className="text-center">
+              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Quality Parts</h3>
+              <p className="text-gray-600">We use only high-quality, genuine parts for all repairs</p>
+            </div>
+            <div className="text-center">
+              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Quick Turnaround</h3>
+              <p className="text-gray-600">Fast and efficient service to minimize your downtime</p>
+            </div>
+            <div className="text-center">
+              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Affordable Pricing</h3>
+              <p className="text-gray-600">Competitive rates without compromising on quality</p>
             </div>
           </div>
         </div>
@@ -211,7 +255,7 @@ END:VCARD`;
                   })}
                   rows="4"
                   className="input-field"
-                  placeholder="Tell us about your vehicle and what service you need..."
+                  placeholder="Tell us about your motor issue and what service you need..."
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
