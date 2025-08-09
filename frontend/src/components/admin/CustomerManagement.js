@@ -246,7 +246,7 @@ const CustomerManagement = () => {
                   type="tel"
                   value={formData.phoneNumber}
                   onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
-                  placeholder="+1234567890"
+                                                placeholder="+918866353250"
                   className="input-field"
                   required
                 />

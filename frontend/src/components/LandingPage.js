@@ -40,7 +40,7 @@ const LandingPage = () => {
 VERSION:3.0
 FN:Universal Electric Motor Rewinding
 ORG:Professional Motor Rewinding Services
-TEL:+1234567890
+TEL:+918866353250
 EMAIL:info@universalmotorrewinding.com
 ADR:;;123 Main Street;City;State;12345;USA
 URL:https://universalmotorrewinding.com
@@ -60,7 +60,7 @@ END:VCARD`;
   };
 
   const openWhatsApp = () => {
-    const phoneNumber = '+1234567890'; // Replace with actual number
+    const phoneNumber = '+918866353250'; // Updated with actual number
     const message = 'Hi! I\'m interested in your motor repair services.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -289,7 +289,7 @@ END:VCARD`;
             <div className="text-center">
               <Phone className="h-8 w-8 text-primary-600 mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">Phone</h3>
-              <p className="text-gray-600">+1 (234) 567-8900</p>
+                             <p className="text-gray-600">+918866353250</p>
             </div>
                          <div className="text-center">
                <Mail className="h-8 w-8 text-primary-600 mx-auto mb-4" />

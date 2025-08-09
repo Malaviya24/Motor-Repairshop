@@ -3,13 +3,13 @@ const Customer = require('../models/Customer');
 require('dotenv').config();
 
 const testCustomers = [
-  {
-    name: 'John Smith',
-    phoneNumber: '+1234567890',
-    message: 'Need water pump motor repair',
-    status: 'unread',
-    createdAt: new Date()
-  },
+                {
+                name: 'John Smith',
+                phoneNumber: '+918866353250',
+                message: 'Need water pump motor repair',
+                status: 'unread',
+                createdAt: new Date()
+              },
   {
     name: 'Sarah Johnson',
     phoneNumber: '+1987654321',
