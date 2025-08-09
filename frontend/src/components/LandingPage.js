@@ -39,12 +39,12 @@ const LandingPage = () => {
   const downloadVCard = () => {
     const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:Motor Repair Shop
-ORG:Professional Motor Repair Services
+FN:Universal Electric Motor Rewinding
+ORG:Professional Motor Rewinding Services
 TEL:+1234567890
-EMAIL:info@motorrepairshop.com
+EMAIL:info@universalmotorrewinding.com
 ADR:;;123 Main Street;City;State;12345;USA
-URL:https://motorrepairshop.com
+URL:https://universalmotorrewinding.com
 END:VCARD`;
 
     const blob = new Blob([vcard], { type: 'text/vcard' });
@@ -75,7 +75,7 @@ END:VCARD`;
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <Wrench className="h-8 w-8 text-primary-600" />
-              <h1 className="ml-2 text-2xl font-bold text-gray-900">Motor Repair Shop</h1>
+              <h1 className="ml-2 text-2xl font-bold text-gray-900">Universal Electric Motor Rewinding</h1>
             </div>
             <Link 
               to="/login" 
@@ -292,11 +292,11 @@ END:VCARD`;
               <h3 className="text-lg font-semibold mb-2">Phone</h3>
               <p className="text-gray-600">+1 (234) 567-8900</p>
             </div>
-            <div className="text-center">
-              <Mail className="h-8 w-8 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <p className="text-gray-600">info@motorrepairshop.com</p>
-            </div>
+                         <div className="text-center">
+               <Mail className="h-8 w-8 text-primary-600 mx-auto mb-4" />
+               <h3 className="text-lg font-semibold mb-2">Email</h3>
+               <p className="text-gray-600">info@universalmotorrewinding.com</p>
+             </div>
             <div className="text-center">
               <MapPin className="h-8 w-8 text-primary-600 mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">Address</h3>
@@ -308,9 +308,9 @@ END:VCARD`;
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Motor Repair Shop. All rights reserved.</p>
-        </div>
+                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+           <p>&copy; 2024 Universal Electric Motor Rewinding. All rights reserved.</p>
+         </div>
       </footer>
     </div>
   );
