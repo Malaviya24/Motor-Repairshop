@@ -19,6 +19,7 @@ import toast from 'react-hot-toast';
 const CustomerManagement = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -67,6 +68,7 @@ const CustomerManagement = () => {
       return;
     }
 
+    setSubmitting(true);
     try {
       if (editingCustomer) {
         await axios.put(`${process.env.REACT_APP_API_URL}/customers/${editingCustomer._id}`, formData);
@@ -83,6 +85,8 @@ const CustomerManagement = () => {
     } catch (error) {
       const message = error.response?.data?.message || 'Failed to save customer';
       toast.error(message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -277,11 +281,21 @@ const CustomerManagement = () => {
               </label>
             </div>
             <div className="flex gap-3">
-              <button type="submit" className="btn-primary">
-                {editingCustomer ? 'Update Customer' : 'Add Customer'}
+              <button type="submit" className="btn-primary" disabled={submitting}>
+                {submitting ? (
+                  <>
+                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {editingCustomer ? 'Updating...' : 'Adding...'}
+                  </>
+                ) : (
+                  editingCustomer ? 'Update Customer' : 'Add Customer'
+                )}
               </button>
-              <button type="button" onClick={handleCancel} className="btn-secondary">
-                Cancel
+              <button type="button" onClick={handleCancel} className="btn-secondary" disabled={submitting}>
+                {submitting ? 'Cancelling...' : 'Cancel'}
               </button>
             </div>
           </form>

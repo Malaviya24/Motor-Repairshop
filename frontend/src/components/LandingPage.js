@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import ThemeToggle from './ThemeToggle';
 
 const LandingPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,249 +68,284 @@ END:VCARD`;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center">
-              <Wrench className="h-8 w-8 text-primary-600" />
-              <h1 className="ml-2 text-2xl font-bold text-gray-900">Universal Electric Motor Rewinding</h1>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+             {/* Header */}
+       <header className="bg-white dark:bg-slate-900 shadow-sm transition-colors duration-200">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="flex justify-between items-center py-6">
+             <div className="flex items-center">
+               <div className="text-3xl mr-3">⚡</div>
+               <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+                 Universal Electric Motor Rewinding
+               </h1>
+             </div>
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+                             <Link 
+                 to="/login" 
+                 className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg border border-slate-600"
+               >
+                 👨‍💼 Admin Login
+               </Link>
             </div>
-            <Link 
-              to="/login" 
-              className="btn-primary"
-            >
-              Admin Login
-            </Link>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="text-5xl mb-6 opacity-90">⚡</div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
             Professional Motor Repair Services
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-primary-100">
+          <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-4xl mx-auto leading-relaxed">
             We specialize in repairing and servicing a wide range of electric motors to keep your machines running smoothly
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button 
               onClick={openWhatsApp}
-              className="btn-secondary flex items-center justify-center gap-2"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
-              <MessageCircle className="h-5 w-5" />
+              <span className="text-xl">💬</span>
               Chat on WhatsApp
             </button>
             <button 
               onClick={downloadVCard}
-              className="btn-secondary flex items-center justify-center gap-2"
+              className="bg-white hover:bg-slate-50 text-slate-800 px-10 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 transition-all duration-300 shadow-xl hover:shadow-2xl border border-slate-200"
             >
-              <Download className="h-5 w-5" />
+              <span className="text-xl">📱</span>
               Save Contact
             </button>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Motor Repair Services We Offer</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="card card-hover text-center">
-              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Water Pump Motors</h3>
-              <p className="text-gray-600">Quick repairs and servicing to restore water flow and prevent downtime</p>
-            </div>
-            <div className="card card-hover text-center">
-              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Air Conditioner Motors</h3>
-              <p className="text-gray-600">Fixing cooling fans and compressor motors for optimal performance</p>
-            </div>
-            <div className="card card-hover text-center">
-              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Industrial Motors</h3>
-              <p className="text-gray-600">Maintenance and repair for heavy-duty machinery motors in factories and workshops</p>
-            </div>
-            <div className="card card-hover text-center">
-              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Fan & Blower Motors</h3>
-              <p className="text-gray-600">Balancing, rewinding, and restoring for quiet and efficient operation</p>
-            </div>
-            <div className="card card-hover text-center">
-              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Submersible & Borewell Motors</h3>
-              <p className="text-gray-600">Expert service to handle water supply needs without interruptions</p>
-            </div>
-            <div className="card card-hover text-center">
-              <Wrench className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Custom Motor Repairs</h3>
-              <p className="text-gray-600">Any type of single-phase or three-phase motor issues resolved with precision</p>
-            </div>
-          </div>
+             {/* Services Section */}
+       <section className="py-16 bg-gray-50 dark:bg-slate-900">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white transition-colors duration-200">
+             Motor Repair Services We Offer
+           </h2>
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+               <div className="text-3xl mb-6 opacity-80">💧</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Water Pump Motors</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Quick repairs and servicing to restore water flow and prevent downtime</p>
+             </div>
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+               <div className="text-3xl mb-6 opacity-80">❄️</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Air Conditioner Motors</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Fixing cooling fans and compressor motors for optimal performance</p>
+             </div>
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+               <div className="text-3xl mb-6 opacity-80">🏭</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Industrial Motors</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Maintenance and repair for heavy-duty machinery motors in factories and workshops</p>
+             </div>
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+               <div className="text-3xl mb-6 opacity-80">💨</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Fan & Blower Motors</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Balancing, rewinding, and restoring for quiet and efficient operation</p>
+             </div>
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+               <div className="text-3xl mb-6 opacity-80">🌊</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Submersible & Borewell Motors</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Expert service to handle water supply needs without interruptions</p>
+             </div>
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
+               <div className="text-3xl mb-6 opacity-80">🔧</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Custom Motor Repairs</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Any type of single-phase or three-phase motor issues resolved with precision</p>
+             </div>
+           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Skilled Technicians</h3>
-              <p className="text-gray-600">Experienced professionals with years of motor repair expertise</p>
-            </div>
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Quality Parts</h3>
-              <p className="text-gray-600">We use only high-quality, genuine parts for all repairs</p>
-            </div>
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Quick Turnaround</h3>
-              <p className="text-gray-600">Fast and efficient service to minimize your downtime</p>
-            </div>
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Affordable Pricing</h3>
-              <p className="text-gray-600">Competitive rates without compromising on quality</p>
-            </div>
-          </div>
+             {/* Why Choose Us Section */}
+       <section className="py-16 bg-white dark:bg-slate-800 transition-colors duration-200">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white transition-colors duration-200">
+             Why Choose Us?
+           </h2>
+           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">👨‍🔧</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Skilled Technicians</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Experienced professionals with years of motor repair expertise</p>
+             </div>
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">⭐</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Quality Parts</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">We use only high-quality, genuine parts for all repairs</p>
+             </div>
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">⚡</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Quick Turnaround</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Fast and efficient service to minimize your downtime</p>
+             </div>
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">💰</div>
+               <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Affordable Pricing</h3>
+               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Competitive rates without compromising on quality</p>
+             </div>
+           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-            <p className="text-gray-600">Send us a message and we'll get back to you as soon as possible</p>
-          </div>
+             {/* Contact Form Section */}
+       <section className="py-16 bg-gray-50 dark:bg-slate-900 transition-colors duration-200">
+         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-12">
+             <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white transition-colors duration-200">
+               Get In Touch
+             </h2>
+             <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200">
+               Send us a message and we'll get back to you as soon as possible
+             </p>
+           </div>
 
-          {isSubmitted ? (
-            <div className="card text-center">
-              <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-semibold mb-2">Message Sent!</h3>
-              <p className="text-gray-600 mb-6">Thank you for contacting us. We'll get back to you soon.</p>
-              <button 
-                onClick={() => setIsSubmitted(false)}
-                className="btn-primary"
-              >
-                Send Another Message
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="card">
+           {isSubmitted ? (
+             <div className="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-600 text-center shadow-lg">
+               <div className="text-5xl mb-6 opacity-80">✅</div>
+               <h3 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">Message Sent!</h3>
+               <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">Thank you for contacting us. We'll get back to you soon.</p>
+               <button 
+                 onClick={() => setIsSubmitted(false)}
+                 className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg"
+               >
+                 Send Another Message
+               </button>
+             </div>
+           ) : (
+                         <form onSubmit={handleSubmit(onSubmit)} className="card bg-white dark:bg-slate-800 dark:border-slate-600 transition-colors duration-200">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
                     Full Name *
                   </label>
-                  <input
-                    type="text"
-                    {...register('name', { 
-                      required: 'Name is required',
-                      minLength: { value: 2, message: 'Name must be at least 2 characters' }
-                    })}
-                    className="input-field"
-                    placeholder="Enter your full name"
-                  />
+                                     <input
+                     type="text"
+                     {...register('name', { 
+                       required: 'Name is required',
+                       minLength: { value: 2, message: 'Name must be at least 2 characters' }
+                     })}
+                     className="input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                     placeholder="Enter your full name"
+                   />
                   {errors.name && (
                     <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
                     Phone Number *
                   </label>
-                  <input
-                    type="tel"
-                    {...register('phoneNumber', { 
-                      required: 'Phone number is required',
-                      pattern: { 
-                        value: /^\+?[\d\s\-()]+$/,
-                        message: 'Please enter a valid phone number'
-                      }
-                    })}
-                    className="input-field"
-                    placeholder="Enter your phone number"
-                  />
+                                     <input
+                     type="tel"
+                     {...register('phoneNumber', { 
+                       required: 'Phone number is required',
+                       validate: {
+                         minLength: (value) => {
+                           const cleanNumber = value.replace(/[\s\-\(\)]/g, '');
+                           if (cleanNumber.length < 10) {
+                             return 'Please enter full phone number (minimum 10 digits)';
+                           }
+                           return true;
+                         },
+                         validFormat: (value) => {
+                           const cleanNumber = value.replace(/[\s\-\(\)]/g, '');
+                           if (!/^\+?[1-9]\d{9,14}$/.test(cleanNumber)) {
+                             return 'Please enter a valid phone number format';
+                           }
+                           return true;
+                         },
+                         validCountryCode: (value) => {
+                           const cleanNumber = value.replace(/[\s\-\(\)]/g, '');
+                           if (cleanNumber.startsWith('+') && cleanNumber.length < 12) {
+                             return 'Please enter complete number with country code';
+                           }
+                           return true;
+                         }
+                       }
+                     })}
+                     className="input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                     placeholder="+918866353250"
+                   />
                   {errors.phoneNumber && (
                     <p className="text-red-500 text-sm mt-1">{errors.phoneNumber.message}</p>
                   )}
                 </div>
               </div>
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
                   Message *
                 </label>
-                <textarea
-                  {...register('message', { 
-                    required: 'Message is required',
-                    minLength: { value: 10, message: 'Message must be at least 10 characters' }
-                  })}
-                  rows="4"
-                  className="input-field"
-                  placeholder="Tell us about your motor issue and what service you need..."
-                />
+                                 <textarea
+                   {...register('message', { 
+                     required: 'Message is required',
+                     minLength: { value: 10, message: 'Message must be at least 10 characters' }
+                   })}
+                   rows="4"
+                   className="input-field dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
+                   placeholder="Tell us about your motor issue and what service you need..."
+                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
                 )}
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full flex items-center justify-center gap-2"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-5 w-5" />
-                    Send Message
-                  </>
-                )}
-              </button>
+                             <button
+                 type="submit"
+                 disabled={isSubmitting}
+                                   className="bg-emerald-600 hover:bg-emerald-700 text-white w-full py-4 rounded-lg font-semibold flex items-center justify-center gap-3 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+               >
+                 {isSubmitting ? (
+                   <>
+                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                     Sending...
+                   </>
+                 ) : (
+                   <>
+                     <span className="text-xl">📤</span>
+                     Send Message
+                   </>
+                 )}
+               </button>
             </form>
           )}
         </div>
       </section>
 
-      {/* Contact Info Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <Phone className="h-8 w-8 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                             <p className="text-gray-600">+918866353250</p>
-            </div>
-                         <div className="text-center">
-               <Mail className="h-8 w-8 text-primary-600 mx-auto mb-4" />
-               <h3 className="text-lg font-semibold mb-2">Email</h3>
-               <p className="text-gray-600">info@universalmotorrewinding.com</p>
+             {/* Contact Info Section */}
+       <section className="py-16 bg-white dark:bg-slate-800 transition-colors duration-200">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="grid md:grid-cols-3 gap-8">
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">📞</div>
+               <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Phone</h3>
+               <p className="text-slate-600 dark:text-slate-300">+918866353250</p>
              </div>
-            <div className="text-center">
-              <MapPin className="h-8 w-8 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Address</h3>
-              <p className="text-gray-600">123 Main Street, City, State 12345</p>
-            </div>
-          </div>
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">📧</div>
+               <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Email</h3>
+               <p className="text-slate-600 dark:text-slate-300">info@universalmotorrewinding.com</p>
+             </div>
+             <div className="text-center bg-gray-50 dark:bg-slate-700 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
+               <div className="text-3xl mb-6 opacity-80">📍</div>
+               <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Address</h3>
+               <p className="text-slate-600 dark:text-slate-300">123 Main Street, City, State 12345</p>
+             </div>
+           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-           <p>&copy; 2024 Universal Electric Motor Rewinding. All rights reserved.</p>
-         </div>
+             {/* Footer */}
+       <footer className="bg-slate-900 dark:bg-slate-950 text-white py-8 transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p>&copy; 2024 Universal Electric Motor Rewinding. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );

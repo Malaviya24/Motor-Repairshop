@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   MessageSquare, 
   Phone, 
@@ -20,10 +20,17 @@ const CustomerMessages = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    fetchMessages();
-    fetchStats();
-  }, [currentPage, filters]);
+  const fetchStats = useCallback(async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/messages/unread`);
+      setStats({ 
+        unreadCount: response.data.data.unreadCount,
+        totalCount: messages.length
+      });
+    } catch (error) {
+      console.error('Failed to fetch stats:', error);
+    }
+  }, [messages.length]);
 
   const fetchMessages = async () => {
     try {
@@ -44,17 +51,10 @@ const CustomerMessages = () => {
     }
   };
 
-  const fetchStats = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/messages/unread`);
-      setStats({ 
-        unreadCount: response.data.data.unreadCount,
-        totalCount: messages.length
-      });
-    } catch (error) {
-      console.error('Failed to fetch stats:', error);
-    }
-  };
+  useEffect(() => {
+    fetchMessages();
+    fetchStats();
+  }, [currentPage, filters, fetchStats]);
 
   const markAsReplied = async (messageId) => {
     try {

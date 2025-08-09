@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../contexts/AuthContext';
 import { Lock, User, Eye, EyeOff } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,21 +28,25 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+         <div className="min-h-screen bg-gray-50 dark:bg-slate-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8 transition-colors duration-200">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
-          <p className="mt-2 text-sm text-gray-600">
+                     <div className="text-4xl mb-6 opacity-80">👨‍💼</div>
+           <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Admin Login</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 transition-colors duration-200">
             Sign in to access the admin dashboard
           </p>
         </div>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="card">
+                 <div className="card bg-white dark:bg-slate-800 dark:border-slate-600 transition-colors duration-200">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200">
                 Username
               </label>
               <div className="mt-1 relative">
@@ -55,7 +60,7 @@ const LoginPage = () => {
                     required: 'Username is required',
                     minLength: { value: 3, message: 'Username must be at least 3 characters' }
                   })}
-                  className="input-field pl-10"
+                                     className="input-field pl-10 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
                   placeholder="Enter your username"
                 />
               </div>
@@ -65,7 +70,7 @@ const LoginPage = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -79,7 +84,7 @@ const LoginPage = () => {
                     required: 'Password is required',
                     minLength: { value: 6, message: 'Password must be at least 6 characters' }
                   })}
-                  className="input-field pl-10 pr-10"
+                                     className="input-field pl-10 pr-10 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 transition-colors duration-200"
                   placeholder="Enter your password"
                 />
                 <button
@@ -100,23 +105,23 @@ const LoginPage = () => {
             </div>
 
             <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="btn-primary w-full flex items-center justify-center gap-2"
-              >
-                {isLoading ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    Signing in...
-                  </>
-                ) : (
-                  <>
-                    <Lock className="h-5 w-5" />
-                    Sign In
-                  </>
-                )}
-              </button>
+                             <button
+                 type="submit"
+                 disabled={isLoading}
+                                   className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-3 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+               >
+                 {isLoading ? (
+                   <>
+                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                     Signing in...
+                   </>
+                 ) : (
+                   <>
+                     <span className="text-xl">🔐</span>
+                     Sign In
+                   </>
+                 )}
+               </button>
             </div>
           </form>
         </div>
