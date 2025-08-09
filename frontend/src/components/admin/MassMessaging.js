@@ -61,48 +61,48 @@ const MassMessaging = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Mass Messaging</h1>
-        <p className="text-gray-600">Send WhatsApp messages to all your customers</p>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Mass Messaging</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Send WhatsApp messages to all your customers</p>
       </div>
 
       {/* Customer Stats */}
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="card">
-          <div className="flex items-center gap-4">
-            <Users className="h-8 w-8 text-primary-600" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="card p-4 sm:p-6">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Users className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />
             <div>
-              <p className="text-sm text-gray-600">Total Customers</p>
-              <p className="text-2xl font-bold text-gray-900">{customerStats.totalCustomers}</p>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Total Customers</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.totalCustomers}</p>
             </div>
           </div>
         </div>
-        <div className="card">
-          <div className="flex items-center gap-4">
-            <CheckCircle className="h-8 w-8 text-green-600" />
+        <div className="card p-4 sm:p-6">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
             <div>
-              <p className="text-sm text-gray-600">Verified Customers</p>
-              <p className="text-2xl font-bold text-gray-900">{customerStats.verifiedCustomers}</p>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Verified Customers</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.verifiedCustomers}</p>
             </div>
           </div>
         </div>
-        <div className="card">
-          <div className="flex items-center gap-4">
-            <XCircle className="h-8 w-8 text-orange-600" />
+        <div className="card p-4 sm:p-6 sm:col-span-2 lg:col-span-1">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <XCircle className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
             <div>
-              <p className="text-sm text-gray-600">Unverified Customers</p>
-              <p className="text-2xl font-bold text-gray-900">{customerStats.unverifiedCustomers}</p>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Unverified Customers</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{customerStats.unverifiedCustomers}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Message Form */}
-      <div className="card">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="card p-4 sm:p-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Message *
             </label>
             <textarea
@@ -112,7 +112,7 @@ const MassMessaging = () => {
                 maxLength: { value: 1000, message: 'Message must be less than 1000 characters' }
               })}
               rows="4"
-              className="input-field"
+              className="input-field w-full"
               placeholder="Enter your message to send to all customers..."
             />
             {errors.message && (
@@ -124,7 +124,7 @@ const MassMessaging = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Image URL (Optional)
             </label>
             <div className="flex items-center gap-2">
@@ -137,7 +137,7 @@ const MassMessaging = () => {
                     message: 'Please enter a valid URL starting with http:// or https://'
                   }
                 })}
-                className="input-field"
+                className="input-field w-full"
                 placeholder="https://example.com/image.jpg"
               />
             </div>
@@ -157,26 +157,32 @@ const MassMessaging = () => {
               onChange={(e) => setSendToVerifiedOnly(e.target.checked)}
               className="rounded border-gray-300"
             />
-            <label htmlFor="sendToVerifiedOnly" className="text-sm text-gray-700">
+            <label htmlFor="sendToVerifiedOnly" className="text-sm text-gray-700 dark:text-gray-300">
               Send only to verified customers
             </label>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
             <button
               type="submit"
               disabled={isSending || (sendToVerifiedOnly ? customerStats.verifiedCustomers === 0 : customerStats.totalCustomers === 0)}
-              className="btn-primary flex items-center gap-2"
+              className="btn-primary flex items-center gap-2 w-full sm:w-auto"
             >
               {isSending ? (
                 <>
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  Sending...
+                  <span className="hidden sm:inline">Sending...</span>
+                  <span className="sm:hidden">Sending</span>
                 </>
               ) : (
                 <>
                   <Send className="h-5 w-5" />
-                  Send to {sendToVerifiedOnly ? 'Verified' : 'All'} Customers ({sendToVerifiedOnly ? customerStats.verifiedCustomers : customerStats.totalCustomers})
+                  <span className="hidden sm:inline">
+                    Send to {sendToVerifiedOnly ? 'Verified' : 'All'} Customers ({sendToVerifiedOnly ? customerStats.verifiedCustomers : customerStats.totalCustomers})
+                  </span>
+                  <span className="sm:hidden">
+                    Send ({sendToVerifiedOnly ? customerStats.verifiedCustomers : customerStats.totalCustomers})
+                  </span>
                 </>
               )}
             </button>
@@ -192,38 +198,38 @@ const MassMessaging = () => {
 
       {/* Send Results */}
       {sendResult && (
-        <div className="card">
-          <h3 className="text-lg font-semibold mb-4">Send Results</h3>
-          <div className="grid md:grid-cols-3 gap-4 mb-4">
+        <div className="card p-4 sm:p-6">
+          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Send Results</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Users className="h-5 w-5 text-gray-500" />
-                <span className="text-sm text-gray-600">Total Recipients</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">Total Recipients</span>
               </div>
-              <p className="text-2xl font-bold text-gray-900">{sendResult.totalRecipients}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{sendResult.totalRecipients}</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm text-gray-600">Successful</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">Successful</span>
               </div>
-              <p className="text-2xl font-bold text-green-600">{sendResult.successful || sendResult.totalRecipients}</p>
+              <p className="text-xl sm:text-2xl font-bold text-green-600">{sendResult.successful || sendResult.totalRecipients}</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <XCircle className="h-5 w-5 text-red-500" />
-                <span className="text-sm text-gray-600">Failed</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">Failed</span>
               </div>
-              <p className="text-2xl font-bold text-red-600">{sendResult.failed || 0}</p>
+              <p className="text-xl sm:text-2xl font-bold text-red-600">{sendResult.failed || 0}</p>
             </div>
           </div>
 
           {sendResult.errors && sendResult.errors.length > 0 && (
             <div>
-              <h4 className="font-medium text-gray-900 mb-2">Errors:</h4>
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Errors:</h4>
               <div className="space-y-2">
                 {sendResult.errors.map((error, index) => (
-                  <div key={index} className="text-sm text-red-600 bg-red-50 p-2 rounded">
+                  <div key={index} className="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 p-2 rounded">
                     {error.phoneNumber}: {error.error}
                   </div>
                 ))}

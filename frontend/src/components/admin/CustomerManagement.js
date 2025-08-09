@@ -9,9 +9,7 @@ import {
   Phone,
   User,
   Search,
-  Filter,
-  Download,
-  Upload
+  Download
 } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -111,7 +109,8 @@ const CustomerManagement = () => {
       toast.success('Customer deleted successfully!');
       fetchCustomers();
     } catch (error) {
-      toast.error('Failed to delete customer');
+      const message = error.response?.data?.message || 'Failed to delete customer';
+      toast.error(message);
     }
   };
 
@@ -120,10 +119,11 @@ const CustomerManagement = () => {
       await axios.patch(`${process.env.REACT_APP_API_URL}/customers/${customerId}/verify`, {
         isVerified: !currentStatus
       });
-      toast.success('Verification status updated!');
+      toast.success(`Customer ${!currentStatus ? 'verified' : 'unverified'} successfully!`);
       fetchCustomers();
     } catch (error) {
-      toast.error('Failed to update verification status');
+      const message = error.response?.data?.message || 'Failed to update verification status';
+      toast.error(message);
     }
   };
 
@@ -168,34 +168,36 @@ const CustomerManagement = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Customer Management</h2>
-          <p className="text-gray-600">Manage your customer database for WhatsApp messaging</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Customer Management</h2>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">Manage your customer database for WhatsApp messaging</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={exportCustomers}
-            className="btn-secondary flex items-center gap-2"
+            className="btn-secondary flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Download className="h-4 w-4" />
-            Export
+            <span className="hidden sm:inline">Export</span>
+            <span className="sm:hidden">Export CSV</span>
           </button>
           <button
             onClick={() => setShowAddForm(true)}
-            className="btn-primary flex items-center gap-2"
+            className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Plus className="h-4 w-4" />
-            Add Customer
+            <span className="hidden sm:inline">Add Customer</span>
+            <span className="sm:hidden">Add Customer</span>
           </button>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="card">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="card p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <div className="flex-1">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -204,7 +206,7 @@ const CustomerManagement = () => {
                 placeholder="Search customers..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="input-field pl-10"
+                className="input-field pl-10 w-full"
               />
             </div>
           </div>
@@ -212,7 +214,7 @@ const CustomerManagement = () => {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="input-field"
+              className="input-field w-full sm:w-auto"
             >
               <option value="all">All Customers</option>
               <option value="verified">Verified Only</option>
@@ -224,14 +226,14 @@ const CustomerManagement = () => {
 
       {/* Add/Edit Form */}
       {showAddForm && (
-        <div className="card">
-          <h3 className="text-lg font-semibold mb-4">
+        <div className="card p-4 sm:p-6">
+          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
             {editingCustomer ? 'Edit Customer' : 'Add New Customer'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Name (Optional)
                 </label>
                 <input
@@ -239,25 +241,25 @@ const CustomerManagement = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   placeholder="Customer name"
-                  className="input-field"
+                  className="input-field w-full"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Phone Number *
                 </label>
                 <input
                   type="tel"
                   value={formData.phoneNumber}
                   onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
-                                                placeholder="+918866353250"
-                  className="input-field"
+                  placeholder="+1234567890"
+                  className="input-field w-full"
                   required
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Notes (Optional)
               </label>
               <textarea
@@ -265,7 +267,7 @@ const CustomerManagement = () => {
                 onChange={(e) => setFormData({...formData, notes: e.target.value})}
                 placeholder="Additional notes about this customer"
                 rows="3"
-                className="input-field"
+                className="input-field w-full"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -276,26 +278,35 @@ const CustomerManagement = () => {
                 onChange={(e) => setFormData({...formData, isVerified: e.target.checked})}
                 className="rounded border-gray-300"
               />
-              <label htmlFor="isVerified" className="text-sm text-gray-700">
-                Mark as verified
+              <label htmlFor="isVerified" className="text-sm text-gray-700 dark:text-gray-300">
+                Mark as verified customer
               </label>
             </div>
-            <div className="flex gap-3">
-              <button type="submit" className="btn-primary" disabled={submitting}>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto"
+              >
                 {submitting ? (
                   <>
-                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    {editingCustomer ? 'Updating...' : 'Adding...'}
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span className="hidden sm:inline">Saving...</span>
+                    <span className="sm:hidden">Saving</span>
                   </>
                 ) : (
-                  editingCustomer ? 'Update Customer' : 'Add Customer'
+                  <>
+                    <span className="hidden sm:inline">{editingCustomer ? 'Update' : 'Add'} Customer</span>
+                    <span className="sm:hidden">{editingCustomer ? 'Update' : 'Add'}</span>
+                  </>
                 )}
               </button>
-              <button type="button" onClick={handleCancel} className="btn-secondary" disabled={submitting}>
-                {submitting ? 'Cancelling...' : 'Cancel'}
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="btn-secondary w-full sm:w-auto"
+              >
+                Cancel
               </button>
             </div>
           </form>
@@ -303,73 +314,64 @@ const CustomerManagement = () => {
       )}
 
       {/* Customers List */}
-      <div className="card">
+      <div className="card p-4 sm:p-6">
         {loading ? (
-          <div className="text-center py-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
-            <p className="mt-2 text-gray-600">Loading customers...</p>
+          <div className="flex justify-center items-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
           </div>
         ) : customers.length === 0 ? (
           <div className="text-center py-8">
             <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No customers found</h3>
-            <p className="text-gray-600">Add your first customer to get started</p>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No customers found</h3>
+            <p className="text-gray-600 dark:text-gray-300">Start by adding your first customer</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Customer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Phone Number
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Notes
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
                 {customers.map((customer) => (
-                  <tr key={customer._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
+                  <tr key={customer._id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-shrink-0 h-8 w-8">
-                          <div className="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
-                            <User className="h-4 w-4 text-primary-600" />
+                        <div className="flex-shrink-0 h-10 w-10">
+                          <div className="h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                            <User className="h-5 w-5 text-primary-600 dark:text-primary-400" />
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
-                            {customer.name || 'Unnamed Customer'}
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">
+                            {customer.name || 'No Name'}
                           </div>
-                          <div className="text-sm text-gray-500">
-                            Added {new Date(customer.createdAt).toLocaleDateString()}
+                          <div className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
+                            <Phone className="h-3 w-3" />
+                            {customer.phoneNumber}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <Phone className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-900">{customer.phoneNumber}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-4 whitespace-nowrap">
                       <button
                         onClick={() => toggleVerification(customer._id, customer.isVerified)}
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           customer.isVerified
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-gray-100 text-gray-800'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
                         }`}
                       >
                         {customer.isVerified ? (
@@ -385,22 +387,22 @@ const CustomerManagement = () => {
                         )}
                       </button>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="text-sm text-gray-900 max-w-xs truncate">
+                    <td className="px-3 py-4">
+                      <div className="text-sm text-gray-900 dark:text-white max-w-xs truncate">
                         {customer.notes || '-'}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <div className="flex gap-2">
+                    <td className="px-3 py-4 whitespace-nowrap text-sm font-medium">
+                      <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleEdit(customer)}
-                          className="text-primary-600 hover:text-primary-900"
+                          className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                         >
                           <Edit className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(customer._id)}
-                          className="text-red-600 hover:text-red-900"
+                          className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -416,26 +418,24 @@ const CustomerManagement = () => {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center">
-          <nav className="flex items-center space-x-2">
-            <button
-              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-              disabled={currentPage === 1}
-              className="btn-secondary px-3 py-2 disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <span className="px-3 py-2 text-sm text-gray-700">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-              disabled={currentPage === totalPages}
-              className="btn-secondary px-3 py-2 disabled:opacity-50"
-            >
-              Next
-            </button>
-          </nav>
+        <div className="flex justify-center items-center gap-2">
+          <button
+            onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+            disabled={currentPage === 1}
+            className="btn-secondary px-3 py-2 disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span className="text-sm text-gray-700 dark:text-gray-300">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            disabled={currentPage === totalPages}
+            className="btn-secondary px-3 py-2 disabled:opacity-50"
+          >
+            Next
+          </button>
         </div>
       )}
     </div>
@@ -443,3 +443,4 @@ const CustomerManagement = () => {
 };
 
 export default CustomerManagement;
+
