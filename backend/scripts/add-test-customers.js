@@ -6,7 +6,7 @@ const testCustomers = [
                 {
                 name: 'John Smith',
                 phoneNumber: '+919876543210',
-                message: 'Need water pump motor repair',
+                message: 'Need water pump motor rewinding',
                 status: 'unread',
                 createdAt: new Date()
               },

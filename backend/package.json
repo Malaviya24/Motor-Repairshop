@@ -1,7 +1,7 @@
 {
   "name": "motor-repair-shop-backend",
   "version": "1.0.0",
-  "description": "Backend API for motor repair shop management",
+  "description": "Backend API for motor rewinding shop management",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["nodejs", "express", "mongodb", "whatsapp-api"],
-  "author": "Motor Repair Shop",
+  "author": "Motor Rewinding Shop",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",

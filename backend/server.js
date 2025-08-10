@@ -46,7 +46,7 @@ const authenticateToken = (req, res, next) => {
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
-    message: 'Motor Repair Shop API is running',
+    message: 'Motor Rewinding Shop API is running',
     timestamp: new Date().toISOString()
   });
 });

@@ -62,7 +62,7 @@ END:VCARD`;
 
   const openWhatsApp = () => {
     const phoneNumber = '+919879825692'; // Main business number
-    const message = 'Hi! I\'m interested in your motor repair services.';
+    const message = 'Hi! I\'m interested in your motor rewinding services.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -102,7 +102,7 @@ END:VCARD`;
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 opacity-90">⚡</div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight px-2">
-            Professional Motor Repair Services
+            Professional Motor Rewinding Services
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 text-slate-200 max-w-4xl mx-auto leading-relaxed px-4">
             We specialize in repairing and servicing a wide range of electric motors to keep your machines running smoothly
@@ -130,7 +130,7 @@ END:VCARD`;
        <section className="py-12 sm:py-16 bg-gray-50 dark:bg-[#1E1E1E]">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 sm:mb-12 text-slate-900 dark:text-white transition-colors duration-200 px-2">
-             Motor Repair Services We Offer
+             Motor Rewinding Services We Offer
            </h2>
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
              <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
@@ -160,7 +160,7 @@ END:VCARD`;
              </div>
              <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-600">
                <div className="text-2xl sm:text-3xl mb-4 sm:mb-6 opacity-80">🔧</div>
-               <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-900 dark:text-white">Custom Motor Repairs</h3>
+               <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-900 dark:text-white">Custom Motor Rewinding</h3>
                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">Any type of single-phase or three-phase motor issues resolved with precision</p>
              </div>
            </div>
@@ -177,7 +177,7 @@ END:VCARD`;
              <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-2xl sm:text-3xl mb-4 sm:mb-6 opacity-80">👨‍🔧</div>
                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-900 dark:text-white">Skilled Technicians</h3>
-               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">Experienced professionals with years of motor repair expertise</p>
+               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">Experienced professionals with years of motor rewinding expertise</p>
              </div>
              <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-2xl sm:text-3xl mb-4 sm:mb-6 opacity-80">⭐</div>

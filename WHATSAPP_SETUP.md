@@ -1,7 +1,7 @@
 # 📱 WhatsApp Business API Setup Guide
 
 ## 🎯 Overview
-This guide will help you set up WhatsApp Business API for your Motor Repair Shop application.
+This guide will help you set up WhatsApp Business API for your Motor Rewinding Shop application.
 
 ## 📋 Prerequisites
 - Facebook Developer Account
@@ -19,7 +19,7 @@ This guide will help you set up WhatsApp Business API for your Motor Repair Shop
 1. In Facebook Developers dashboard, click "Create App"
 2. Select "Business" as the app type
 3. Fill in your app details:
-   - **App Name**: Motor Repair Shop
+   - **App Name**: Motor Rewinding Shop
    - **App Contact Email**: Your email
    - **Business Account**: Select your business account
 4. Click "Create App"
@@ -144,4 +144,4 @@ Once configured, you'll have access to:
 
 ---
 
-**🎯 Ready to get started?** Follow the steps above to add WhatsApp API to your Motor Repair Shop application!
+**🎯 Ready to get started?** Follow the steps above to add WhatsApp API to your Motor Rewinding Shop application!

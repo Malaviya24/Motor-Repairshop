@@ -1,8 +1,8 @@
-# Motor Repair Shop - MERN Stack Setup Guide
+# Motor Rewinding Shop - MERN Stack Setup Guide
 
 ## 🚀 Quick Start
 
-This guide will help you set up the complete MERN stack application for the motor repair shop, including the landing page, admin dashboard, and WhatsApp integration.
+This guide will help you set up the complete MERN stack application for the motor rewinding shop, including the landing page, admin dashboard, and WhatsApp integration.
 
 ## 📋 Prerequisites
 
@@ -108,10 +108,10 @@ REACT_APP_API_URL=http://localhost:5000/api
 
 # WhatsApp Configuration
 REACT_APP_WHATSAPP_NUMBER=+1234567890
-REACT_APP_WHATSAPP_MESSAGE=Hello! I'm interested in your motor repair services.
+REACT_APP_WHATSAPP_MESSAGE=Hello! I'm interested in your motor rewinding services.
 
 # Shop Information
-REACT_APP_SHOP_NAME=Motor Repair Shop
+REACT_APP_SHOP_NAME=Motor Rewinding Shop
 REACT_APP_SHOP_ADDRESS=123 Main Street, City, State 12345
 REACT_APP_SHOP_PHONE=+1234567890
 REACT_APP_SHOP_EMAIL=info@motorrepairshop.com
@@ -396,7 +396,7 @@ mongodump --db motor-repair-shop --out backup/
 
 ---
 
-**🎉 Congratulations!** Your motor repair shop MERN stack application is now ready to use. Remember to:
+**🎉 Congratulations!** Your motor rewinding shop MERN stack application is now ready to use. Remember to:
 
 1. Change the default admin password
 2. Configure your WhatsApp Business API

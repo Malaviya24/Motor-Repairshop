@@ -62,7 +62,7 @@ const seedDatabase = async () => {
       {
         name: 'Mike Wilson',
         phoneNumber: '+919876543212',
-        message: 'Industrial motor repair needed',
+        message: 'Industrial motor rewinding needed',
         isVerified: true,
         status: 'replied',
         notes: 'Priority customer'

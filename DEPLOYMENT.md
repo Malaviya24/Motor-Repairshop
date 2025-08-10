@@ -1,6 +1,6 @@
-# 🚀 Motor Repair Shop - Production Deployment Guide
+# 🚀 Motor Rewinding Shop - Production Deployment Guide
 
-This guide will help you deploy the Motor Repair Shop application to production for your customers.
+This guide will help you deploy the Motor Rewinding Shop application to production for your customers.
 
 ## 📋 Prerequisites
 
@@ -156,7 +156,7 @@ The mass messaging feature will work with real WhatsApp API once configured.
 
 ### 2. Test Backend
 1. Visit `https://your-backend-url.onrender.com/api/health`
-2. Should return: `{"status":"OK","message":"Motor Repair Shop API is running"}`
+2. Should return: `{"status":"OK","message":"Motor Rewinding Shop API is running"}`
 
 ### 3. Test Database
 1. Login to admin panel
@@ -212,7 +212,7 @@ If you encounter issues:
 
 ## 🎉 Success!
 
-Once deployed, your Motor Repair Shop website will be:
+Once deployed, your Motor Rewinding Shop website will be:
 - ✅ **Live and accessible** to customers worldwide
 - ✅ **Secure** with proper authentication
 - ✅ **Scalable** with cloud hosting
@@ -232,4 +232,4 @@ You can:
 - Track customer interactions
 - Monitor business performance
 
-**Congratulations! Your Motor Repair Shop is now live and ready for customers! 🚀**
+**Congratulations! Your Motor Rewinding Shop is now live and ready for customers! 🚀**

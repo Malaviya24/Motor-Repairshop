@@ -1,7 +1,7 @@
 {
   "name": "motor-repair-shop-frontend",
   "version": "1.0.0",
-  "description": "Frontend React application for motor repair shop",
+  "description": "Frontend React application for motor rewinding shop",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

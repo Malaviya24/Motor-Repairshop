@@ -1,4 +1,4 @@
-# 🚗 Motor Repair Shop - MERN Stack Web Application
+# 🚗 Motor Rewinding Shop - MERN Stack Web Application
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18.0.0-green.svg)](https://nodejs.org/)
@@ -7,7 +7,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC.svg)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive web application for motor repair shops built with the MERN stack (MongoDB, Express.js, React.js, Node.js). Features include customer management, WhatsApp messaging integration, admin dashboard, and responsive design.
+A comprehensive web application for motor rewinding shops built with the MERN stack (MongoDB, Express.js, React.js, Node.js). Features include customer management, WhatsApp messaging integration, admin dashboard, and responsive design.
 
 ## ✨ Features
 
@@ -115,7 +115,7 @@ NODE_ENV=development
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_WHATSAPP_NUMBER=+1234567890
-REACT_APP_SHOP_NAME=Motor Repair Shop
+REACT_APP_SHOP_NAME=Motor Rewinding Shop
 REACT_APP_SHOP_EMAIL=info@motorrepairshop.com
 REACT_APP_SHOP_PHONE=+1 (234) 567-8900
 REACT_APP_SHOP_ADDRESS=123 Main Street, City, State 12345
@@ -239,6 +239,6 @@ If you encounter any issues or have questions:
 
 ---
 
-**Made with ❤️ for motor repair shops worldwide**
+**Made with ❤️ for motor rewinding shops worldwide**
 
 ⭐ **Star this repository if you find it helpful!**
