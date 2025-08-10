@@ -5,14 +5,14 @@ require('dotenv').config();
 const testCustomers = [
                 {
                 name: 'John Smith',
-                phoneNumber: '+918866353250',
+                phoneNumber: '+919876543210',
                 message: 'Need water pump motor repair',
                 status: 'unread',
                 createdAt: new Date()
               },
   {
     name: 'Sarah Johnson',
-    phoneNumber: '+1987654321',
+    phoneNumber: '+919876543211',
     message: 'AC motor not working properly',
     status: 'unread',
     createdAt: new Date()

@@ -45,7 +45,7 @@ const seedDatabase = async () => {
     const sampleCustomers = [
       {
         name: 'John Smith',
-        phoneNumber: '+918866353250',
+        phoneNumber: '+919876543210',
         message: 'Need repair for water pump motor',
         isVerified: true,
         status: 'unread',
@@ -53,7 +53,7 @@ const seedDatabase = async () => {
       },
       {
         name: 'Sarah Johnson',
-        phoneNumber: '+919876543210',
+        phoneNumber: '+919876543211',
         message: 'AC motor not working properly',
         isVerified: false,
         status: 'unread',
@@ -61,7 +61,7 @@ const seedDatabase = async () => {
       },
       {
         name: 'Mike Wilson',
-        phoneNumber: '+919876543211',
+        phoneNumber: '+919876543212',
         message: 'Industrial motor repair needed',
         isVerified: true,
         status: 'replied',

@@ -43,9 +43,9 @@ This guide will help you deploy the Motor Repair Shop application to production 
 1. Update `frontend/.env` with production API URL:
 ```env
 REACT_APP_API_URL=https://your-backend-url.onrender.com/api
-REACT_APP_WHATSAPP_NUMBER=+918866353250
+REACT_APP_WHATSAPP_NUMBER=+919879825692
 REACT_APP_SHOP_NAME=Universal Electric Motor Rewinding
-REACT_APP_SHOP_PHONE=+918866353250
+REACT_APP_SHOP_PHONE=+919879825692
 ```
 
 ### 2. Deploy to Vercel
@@ -114,9 +114,9 @@ Make sure these are set in your hosting platforms:
 **Frontend (Vercel):**
 ```env
 REACT_APP_API_URL=https://your-backend-url.onrender.com/api
-REACT_APP_WHATSAPP_NUMBER=+918866353250
+REACT_APP_WHATSAPP_NUMBER=+919879825692
 REACT_APP_SHOP_NAME=Universal Electric Motor Rewinding
-REACT_APP_SHOP_PHONE=+918866353250
+REACT_APP_SHOP_PHONE=+919879825692
 ```
 
 **Backend (Render):**

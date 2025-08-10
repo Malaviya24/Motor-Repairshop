@@ -41,7 +41,7 @@ const LandingPage = () => {
 VERSION:3.0
 FN:Universal Electric Motor Rewinding
 ORG:Professional Motor Rewinding Services
-TEL:+918866353250
+TEL:+919879825692
 EMAIL:info@universalmotorrewinding.com
 ADR:;;123 Main Street;City;State;12345;USA
 URL:https://universalmotorrewinding.com
@@ -61,7 +61,7 @@ END:VCARD`;
   };
 
   const openWhatsApp = () => {
-    const phoneNumber = '+918866353250'; // Updated with actual number
+    const phoneNumber = '+919879825692'; // Main business number
     const message = 'Hi! I\'m interested in your motor repair services.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -272,7 +272,7 @@ END:VCARD`;
                        }
                      })}
                      className="input-field dark:bg-[#121212] dark:border-slate-600 dark:text-white dark:placeholder-[#888888] transition-colors duration-200"
-                     placeholder="+918866353250"
+                     placeholder="+919879825692"
                    />
                   {errors.phoneNumber && (
                     <p className="text-red-500 text-sm mt-1">{errors.phoneNumber.message}</p>
@@ -325,7 +325,7 @@ END:VCARD`;
              <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">📞</div>
                <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Phone</h3>
-               <p className="text-slate-600 dark:text-slate-300">+918866353250</p>
+                               <p className="text-slate-600 dark:text-slate-300">+919879825692</p>
              </div>
              <div className="text-center bg-gray-50 dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg">
                <div className="text-3xl mb-6 opacity-80">📧</div>

@@ -60,7 +60,7 @@ Add this to your `frontend/.env` file:
 
 ```env
 # WhatsApp Configuration
-REACT_APP_WHATSAPP_NUMBER=+918866353250
+REACT_APP_WHATSAPP_NUMBER=+919879825692
 ```
 
 ## 🎯 Features Enabled
