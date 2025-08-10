@@ -347,7 +347,7 @@ END:VCARD`;
              {/* Footer */}
        <footer className="bg-slate-900 dark:bg-slate-950 text-white py-8 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Universal Electric Motor Rewinding. All rights reserved.</p>
+          <p>&copy; 2025 Universal Electric Motor Rewinding. All rights reserved.</p>
         </div>
       </footer>
     </div>
